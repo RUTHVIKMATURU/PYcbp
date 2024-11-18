@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Text Justification Tool</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Text Justification Tool</h1>
+        <form action="/" method="post" enctype="multipart/form-data">
+
+            <label for="file">Select a text file:</label>
+            <input type="file" id="file" name="file" accept=".txt" required><br><br>
+
+            <label for="line_width">Line Width:</label>
+            <input type="number" id="line_width" name="line_width" placeholder="Enter line width" required><br><br>
+
+            <button type="submit">Submit</button>
+        </form>
+        
+        {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            <ul class="messages">
+                {% for message in messages %}
+                    <li>{{ message }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+        {% endwith %}
+    </div>
+</body>
+</html>
